@@ -3,7 +3,7 @@ import express from 'express'
 import fetch from 'node-fetch'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import path from 'path'
+import { resolve, join } from 'path'
 
 dotenv.config()
 
@@ -75,11 +75,12 @@ app.get('/callback', async (req, res) => {
   })
 })
 
-app.use(express.static('public'))
-app.use(express.static('dist'))
+app.use(express.static(join(resolve(), '..', 'public')))
+app.use(express.static(join(resolve(), '..', 'assets')))
+app.use(express.static(join(resolve(), '..', 'dist')))
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'))
+app.get('/', (_, res) => {
+  res.sendFile(join(resolve(), '..', 'dist', 'index.html'))
 })
 
 app.listen(port, () => {
