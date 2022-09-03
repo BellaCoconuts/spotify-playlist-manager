@@ -1,7 +1,8 @@
 window.APP_CONFIG = {
-  apiUrl: 'https://localhost:3000',
+  apiUrl: 'http://localhost:3000',
   endpoints: {
     login: '/login',
+    token: '/token',
     getPlaylist: '/playlist',
     getTrackInfo: '/track-info',
   },

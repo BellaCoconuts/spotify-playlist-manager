@@ -18,6 +18,7 @@ const client_secret = process.env.CLIENT_SECRET
 const redirect_uri = 'http://localhost:3000/callback'
 
 app.get('/login', (_, res) => {
+  console.log('handling log in')
   const state = crypto.randomBytes(16).toString('hex')
 
   const scope = 'user-read-private user-read-email'
@@ -33,12 +34,15 @@ app.get('/login', (_, res) => {
   res.redirect(`https://accounts.spotify.com/authorize?${params.toString()}`)
 })
 
-app.get('/callback', async (req, res) => {
+app.get('/token', async (req, res) => {
+  console.log('entering /token')
+
   const code = req.query.code || null
   const state = req.query.code || null
   const params = new URLSearchParams({ error: 'state_mismatch' })
 
   if (state === null) {
+    console.log('state null, returning')
     res.redirect(`/#${params}`)
     return
   }
@@ -68,6 +72,8 @@ app.get('/callback', async (req, res) => {
     },
   })
 
+  console.log(response)
+
   const data = await response.json()
 
   res.send({
@@ -80,6 +86,9 @@ app.use(express.static(join(resolve(), '..', 'assets')))
 app.use(express.static(join(resolve(), '..', 'dist')))
 
 app.get('/', (_, res) => {
+  res.sendFile(join(resolve(), '..', 'dist', 'index.html'))
+})
+app.get('*', (_, res) => {
   res.sendFile(join(resolve(), '..', 'dist', 'index.html'))
 })
 

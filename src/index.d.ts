@@ -6,6 +6,7 @@ declare global {
       apiUrl: string
       endpoints: {
         login: string
+        token: string
         getPlaylist: string
         getTrackInfo: string
       }
