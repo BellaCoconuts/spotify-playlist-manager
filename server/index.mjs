@@ -21,7 +21,7 @@ app.get('/login', (_, res) => {
   console.log('handling log in')
   const state = crypto.randomBytes(16).toString('hex')
 
-  const scope = 'user-read-private user-read-email'
+  const scope = 'user-read-private user-read-email user-library-read'
 
   const params = new URLSearchParams({
     response_type: 'code',
