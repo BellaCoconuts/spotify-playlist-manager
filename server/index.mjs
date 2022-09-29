@@ -72,8 +72,6 @@ app.get('/token', async (req, res) => {
     },
   })
 
-  console.log(response)
-
   const data = await response.json()
 
   res.send({
