@@ -6,7 +6,7 @@ export function PlayLists({ playlists }: PlaylistsProps) {
   const setUnavilableTracks = useSpotifyStore(
     (state) => state.setUnavilableTracks
   )
-  const unavailableTracks = useSpotifyStore((state) => state.unavailableTracks)
+  const unavailableTracks = useSpotifyStore((state) => state.tracks)
   const handleClick = async (href: string, numberOfTracks: number) => {
     const tracks = []
 
@@ -43,7 +43,7 @@ export function PlayLists({ playlists }: PlaylistsProps) {
         ))}
 
       {unavailableTracks.length > 0 &&
-        unavailableTracks.items.map((t: any) => (
+        unavailableTracks.map((t: any) => (
           <p>
             {t.track.name} - {t.track.artists[0].name}
           </p>

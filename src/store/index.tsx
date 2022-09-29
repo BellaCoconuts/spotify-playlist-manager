@@ -1,20 +1,17 @@
 import create from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
+import { TrackDisplay } from '../types/TrackDisplay'
 
 export interface Store {
   token: string
-  unavailableTracks: any
-  tracks: any
+  tracks: TrackDisplay[]
   login: () => Promise<void>
   setLogin: boolean
   getToken: (code: string, state: string) => Promise<void>
-  // getPlaylists: () => Promise<void>
-  // getPlaylist: () => Promise<void>
-  setUnavilableTracks: (tracks: any) => void
+  setUnavilableTracks: (additionalTracks: TrackDisplay[]) => void
 }
 
 const loginUrl = `${window.APP_CONFIG.apiUrl}${window.APP_CONFIG.endpoints.login}`
-const getAllPlaylists = `${window.APP_CONFIG.spotifyApiUrl}${window.APP_CONFIG.spotifyEndpoints.getAllPlaylists}`
 const tokenUrl = (code: string, state: string) =>
   `${window.APP_CONFIG.apiUrl}${window.APP_CONFIG.endpoints.token}?code=${code}&state=${state}`
 
@@ -23,9 +20,12 @@ const useSpotifyStore = create<Store>()(
     persist(
       (set, get) => ({
         token: '',
-        unavailableTracks: [],
-        setUnavilableTracks: (tracks: any) => {
-          set((state) => ({ ...state, unavailableTracks: tracks }))
+        setUnavilableTracks: (additionalTracks: TrackDisplay[]) => {
+          const tracks = get().tracks
+          set((state) => ({
+            ...state,
+            tracks: [...tracks, ...additionalTracks],
+          }))
         },
         tracks: [],
         login: async () => {

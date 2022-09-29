@@ -25,5 +25,6 @@ export interface Track {
     track_number: number
     type: 'track'
     uri: string
+    is_playable?: boolean
   }
 }
