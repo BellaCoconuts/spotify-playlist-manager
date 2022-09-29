@@ -26,13 +26,13 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-  
+
       - name: npm install, build server
         run: |
           cd server
           npm install
           npm run build
-          
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -59,4 +59,4 @@ jobs:
           app-name: 'web-dedupe-sptfy-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2B180971D6E4455AB3E95C2FF6BEB2A3 }}
-          package: .
+          package: ./build
