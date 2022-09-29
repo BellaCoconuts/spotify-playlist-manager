@@ -59,4 +59,4 @@ jobs:
           app-name: 'web-dedupe-sptfy-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2B180971D6E4455AB3E95C2FF6BEB2A3 }}
-          package: ./build
+          package: .
