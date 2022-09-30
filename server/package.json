@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.mjs",
-    "build": "cp index.mjs ../build && cp node_modules ../build && cp ecosystem.mjs ../build"
+    "build": "cp index.js ../build && cp node_modules ../build && cp ecosystem.mjs ../build"
   },
   "keywords": [],
   "author": "",

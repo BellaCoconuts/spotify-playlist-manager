@@ -1,6 +1,8 @@
 module.exports = {
-    apps : [{
-      name   : "spotify-app",
-      script : "./app.mjs"
-    }]
-  }
+  apps: [
+    {
+      name: 'spotify-app',
+      script: './index.js',
+    },
+  ],
+}
