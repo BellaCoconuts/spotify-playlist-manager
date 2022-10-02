@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.mjs",
-    "build": "cp index.js ../build && cp -r node_modules ../build && cp ecosystem.config.js ../build"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
