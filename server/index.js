@@ -84,10 +84,10 @@ app.use(express.static(join(resolve(), '..', 'assets')))
 app.use(express.static(join(resolve(), '..', 'dist')))
 
 app.get('/', (_, res) => {
-  res.sendFile(join(resolve(), '..', 'dist', 'index.html'))
+  res.sendFile(join(resolve(), 'dist', 'index.html'))
 })
 app.get('*', (_, res) => {
-  res.sendFile(join(resolve(), '..', 'dist', 'index.html'))
+  res.sendFile(join(resolve(), 'dist', 'index.html'))
 })
 
 app.listen(port, () => {
