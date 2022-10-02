@@ -31,7 +31,10 @@ jobs:
         run: |
           cd server
           npm install
-          npm run build
+          cp node_modules ../build
+          cp index.js ../build
+          cp package.json ../build
+          cp package-lock.json ../build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
