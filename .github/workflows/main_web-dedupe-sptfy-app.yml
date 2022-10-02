@@ -31,7 +31,7 @@ jobs:
         run: |
           cd server
           npm install
-          cp node_modules ../build
+          cp -r node_modules ../build
           cp index.js ../build
           cp package.json ../build
           cp package-lock.json ../build
