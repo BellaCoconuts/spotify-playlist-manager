@@ -79,9 +79,15 @@ app.get('/token', async (req, res) => {
   })
 })
 
-app.use(express.static(join(resolve(), 'public')))
-app.use(express.static(join(resolve(), 'assets')))
-app.use(express.static(join(resolve(), 'dist')))
+if (process.env.NODE_ENV === 'development') {
+  app.use(express.static(join(resolve(), '..', '..', 'public')))
+  app.use(express.static(join(resolve(), '..', '..', 'assets')))
+  app.use(express.static(join(resolve(), '..', '..', 'dist')))
+} else {
+  app.use(express.static(join(resolve(), 'public')))
+  app.use(express.static(join(resolve(), 'assets')))
+  app.use(express.static(join(resolve(), 'dist')))
+}
 
 app.get('/', (_, res) => {
   res.sendFile(join(resolve(), 'dist', 'index.html'))
