@@ -1,6 +1,6 @@
 window.APP_CONFIG = {
   apiUrl:
-    window.location.hostname === 'localhost'
+    window.location.hostname === 'http://localhost:3000'
       ? 'http://localhost:3000'
       : 'https://web-dedupe-sptfy-app.azurewebsites.net',
   spotifyApiUrl: 'https://api.spotify.com/v1',
