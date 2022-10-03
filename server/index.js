@@ -86,9 +86,6 @@ app.use(express.static(join(resolve(), '..', 'dist')))
 app.get('/', (_, res) => {
   res.sendFile(join(resolve(), 'dist', 'index.html'))
 })
-app.get('*', (_, res) => {
-  res.sendFile(join(resolve(), 'dist', 'index.html'))
-})
 
 app.listen(port, () => {
   console.log(`listening on ${port}`)
