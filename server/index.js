@@ -93,6 +93,12 @@ if (process.env.NODE_ENV === 'development') {
 app.get('/', (_, res) => {
   res.sendFile(join(resolve(), 'dist', 'index.html'))
 })
+app.get('/login', (_, res) => {
+  res.sendFile(join(resolve(), 'dist', 'index.html'))
+})
+app.get('/callback', (_, res) => {
+  res.sendFile(join(resolve(), 'dist', 'index.html'))
+})
 
 app.listen(port, () => {
   console.log(`listening on ${port}`)
