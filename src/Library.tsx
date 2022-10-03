@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useSpotifyStore } from './store'
 import { Library as ILibrary } from './types/Library'
 import { Track } from './types/track'
-import cx from 'classnames'
 
 const getData = async (token: string, url: string) => {
   const response = await fetch(url, {

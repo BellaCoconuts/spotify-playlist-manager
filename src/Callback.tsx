@@ -14,7 +14,7 @@ export function Callback() {
   const token = useSpotifyStore((state) => state.token)
   const getToken = useSpotifyStore((state) => state.getToken)
 
-  const validTokenFetch = !token && !error && code && state
+  const validTokenFetch = !error && code && state
 
   useEffect(() => {
     ;(async () => {
@@ -27,7 +27,7 @@ export function Callback() {
       {token !== '' ? (
         <Navigate to='/' replace />
       ) : (
-        <p>Callback {error && <span>Error: {error}</span>}</p>
+        <p>Callback Failure: {error && <span>Error: {error}</span>}</p>
       )}
     </>
   )
