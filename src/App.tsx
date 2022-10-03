@@ -7,7 +7,7 @@ import { Login } from './Login'
 function App() {
   return (
     <div className='App'>
-      <h1>Spotify Playlist Manager</h1>
+      <h1>Playlist Manager</h1>
       <Routes>
         <Route path='/callback' element={<Callback />} />
         <Route path='/login' element={<Login />} />
