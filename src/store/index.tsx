@@ -47,25 +47,6 @@ const useSpotifyStore = create<Store>()(
             console.error(err)
           }
         },
-        // getPlaylists: async () => {
-        //   try {
-        //     const token = get().token
-        //     const response = await fetch(getAllPlaylists, {
-        //       headers: {
-        //         Authorization: `Bearer ${token}`,
-        //         'Content-Type': 'application/json',
-        //       },
-        //     })
-        //     const data = await response.json()
-
-        //     console.log(data)
-
-        //     set((state) => ({ ...state, tracks: data }))
-        //   } catch (err) {
-        //     console.error(err)
-        //   }
-        // },
-        // getPlaylist: async () => {},
       }),
       {
         name: 'playlist-manager-storage',

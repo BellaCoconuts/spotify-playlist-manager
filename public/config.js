@@ -1,5 +1,8 @@
 window.APP_CONFIG = {
-  apiUrl: 'http://localhost:3000',
+  apiUrl:
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:3000'
+      : 'https://web-dedupe-sptfy-app.azurewebsites.net',
   spotifyApiUrl: 'https://api.spotify.com/v1',
   spotifyEndpoints: {
     getAllPlaylists: '/me/playlists',
