@@ -100,6 +100,32 @@ app.get('/callback', (_, res) => {
   res.sendFile(join(resolve(), 'dist', 'index.html'))
 })
 
+app.get('/feature', async (req, res) => {
+  if (!req.query.flag) {
+    res.sendStatus(404)
+  }
+
+  const client = new AppConfigurationClient(
+    process.env.AZURE_APP_CONFIG_CONNECTION_STRING
+  )
+
+  try {
+    const result = await client.getConfigurationSetting({
+      key: `.appConfig.featureFlag/${key.toString().trim()}`,
+    })
+
+    if (result) {
+      const isFeatureEnabled = JSON.parse(result.value).enabled || false
+      res.send(isFeatureEnabled)
+    }
+  } catch (error) {
+    console.error(error)
+    res.sendStatus(404)
+  }
+
+  res.sendStatus(404)
+})
+
 app.listen(port, () => {
   console.log(`listening on ${port}`)
 })

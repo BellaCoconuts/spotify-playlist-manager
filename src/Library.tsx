@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSpotifyStore } from './store'
 import { Library as ILibrary } from './types/Library'
 import { Track } from './types/track'
+import { useFeatureFlag } from './hooks/featureFlags'
 
 const getData = async (token: string, url: string) => {
   const response = await fetch(url, {
@@ -49,9 +50,15 @@ export const Library = () => {
     })()
   }, [])
 
+  const isLibraryEnabled = useFeatureFlag('WeatherForecast')
+
   return (
     <>
-      <h2>Songs that are no longer available:</h2>
+      {isLibraryEnabled ? (
+        <h2>Songs that are no longer available:</h2>
+      ) : (
+        <p>Farts</p>
+      )}
       {tracks.map((t) => (
         <p>{t.name}</p>
       ))}
