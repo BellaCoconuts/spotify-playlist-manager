@@ -1,6 +1,7 @@
 import { AppConfigurationClient } from '@azure/app-configuration'
 import { useState, useMemo } from 'react'
 
+// READ ONLY CONNECTION STRING
 const client = new AppConfigurationClient(
   'Endpoint=https://spotify-app-configurator.azconfig.io;Id=1ve2-lo-s0:ZvT8nSOVLwdzr9wtVnx/;Secret=kzUFp/5MlXd3iOFn36D6gGAH9BFNJZA7uBPjGmnQgY4='
 )
