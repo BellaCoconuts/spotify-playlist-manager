@@ -80,24 +80,24 @@ app.get('/token', async (req, res) => {
   })
 })
 
-if (process.env.NODE_ENV === 'development') {
-  app.use(express.static(join(resolve(), '..', '..', 'public')))
-  app.use(express.static(join(resolve(), '..', '..', 'assets')))
-  app.use(express.static(join(resolve(), '..', '..', 'dist')))
-} else {
-  app.use(express.static(join(resolve(), 'public')))
-  app.use(express.static(join(resolve(), 'assets')))
-  app.use(express.static(join(resolve(), 'dist')))
-}
+// if (process.env.NODE_ENV === 'development') {
+app.use(express.static(join(resolve(), '..', 'build', 'public')))
+app.use(express.static(join(resolve(), '..', 'build', 'assets')))
+app.use(express.static(join(resolve(), '..', 'build', 'dist')))
+// } else {
+//   app.use(express.static(join(resolve(), 'public')))
+//   app.use(express.static(join(resolve(), 'assets')))
+//   app.use(express.static(join(resolve(), 'dist')))
+// }
 
 app.get('/', (_, res) => {
-  res.sendFile(join(resolve(), 'dist', 'index.html'))
+  res.sendFile(join(resolve(), '..', 'dist', 'index.html'))
 })
 app.get('/login', (_, res) => {
-  res.sendFile(join(resolve(), 'dist', 'index.html'))
+  res.sendFile(join(resolve(), '..', 'dist', 'index.html'))
 })
 app.get('/callback', (_, res) => {
-  res.sendFile(join(resolve(), 'dist', 'index.html'))
+  res.sendFile(join(resolve(), '..', 'dist', 'index.html'))
 })
 
 app.get('/feature', async (req, res) => {

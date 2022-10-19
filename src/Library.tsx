@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSpotifyStore } from './store'
 import { Library as ILibrary } from './types/Library'
 import { Track } from './types/track'
-import { useFeatureFlag } from './hooks/featureFlags'
+import { useAzureFeatureFlag } from './hooks/useFeatureFlags'
 
 const getData = async (token: string, url: string) => {
   const response = await fetch(url, {
@@ -50,7 +50,7 @@ export const Library = () => {
     })()
   }, [])
 
-  const isLibraryEnabled = useFeatureFlag('WeatherForecast')
+  const isLibraryEnabled = useAzureFeatureFlag('DisplayLibraryTitle')
 
   return (
     <>
