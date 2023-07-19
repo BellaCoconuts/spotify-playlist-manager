@@ -50,15 +50,11 @@ export const Library = () => {
     })()
   }, [])
 
-  const isLibraryEnabled = useAzureFeatureFlag('DisplayLibraryTitle')
+  // const isLibraryEnabled = useAzureFeatureFlag('DisplayLibraryTitle')
 
   return (
     <>
-      {isLibraryEnabled ? (
-        <h2>Songs that are no longer available:</h2>
-      ) : (
-        <p>Farts</p>
-      )}
+      <h2>Songs that are no longer available:</h2>
       {tracks.map((t) => (
         <p>{t.name}</p>
       ))}
